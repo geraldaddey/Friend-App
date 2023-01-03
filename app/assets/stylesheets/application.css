@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+
+#friends {
+  display: contents;
+}
+/* 
+#friend_1 {
+  color: black;
+  display: flex;
+}
+
+#friend_2 {
+  color: black;
+  display: flex;
+} */
