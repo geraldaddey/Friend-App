@@ -1,14 +1,42 @@
 <p style="color: green"><%= notice %></p>
+<h1>Friends</h1> 
 
-<h1>Friends</h1>
+<div id="friends"> 
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark" >
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email </th>
+        <th scope="col">Phone </th> 
+        <th scope="col">Twitter </th> 
+        <th scope="col"> </th> 
 
-<div id="friends">
-  <% @friends.each do |friend| %>
-    <%= render friend %>
-    <p>
-      <%= link_to "Show this friend", friend %>
-    </p>
-  <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <% @friends.each do |friend| %>
+        <tr>
+          <td><%= friend.id %></td>
+          <td><%= friend.first_name %></td>
+          <td><%= friend.last_name %></td>
+          <td><%= friend.email %></td>
+          <td><%= friend.phone %></td>
+          <td><%= friend.twitter %></td> 
+          <td><%= link_to "Show friend", get_friend_path %></td>
+           <td> <%= link_to "Edit this friend",friends_path %> </td>
+
+
+
+
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
 
-<%= link_to "New friend", new_friend_path %>
+
+<%= link_to "New friend", new_friend_path, class: "btn btn-secondary" %>
+
+

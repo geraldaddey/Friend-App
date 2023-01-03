@@ -7,7 +7,11 @@ class FriendsController < ApplicationController
   end
 
   # GET /friends/1 or /friends/1.json
-  def show
+  def show 
+
+      @friend = Friend.find(params[:id])
+
+    
   end
 
   # GET /friends/new
