@@ -40,7 +40,7 @@ class FriendsControllerTest < ActionDispatch::IntegrationTest
 
   test "should destroy friend" do
     assert_difference("Friend.count", -1) do
-      delete friend_url(@friend)
+      destroy friend_url(@friend)
     end
 
     assert_redirected_to friends_url

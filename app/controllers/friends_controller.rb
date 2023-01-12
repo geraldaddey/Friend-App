@@ -1,5 +1,5 @@
 class FriendsController < ApplicationController
-  before_action :set_friend, only: %i[ show edit update delete ]
+  before_action :set_friend, only: %i[ show edit update destroy ]
 
   # GET /friends or /friends.json
   def index
@@ -8,10 +8,6 @@ class FriendsController < ApplicationController
 
   # GET /friends/1 or /friends/1.json
   def show 
-
-      @friend = Friend.find(params[:id])
-
-    
   end
 
   # GET /friends/new
@@ -27,38 +23,26 @@ class FriendsController < ApplicationController
   def create
     @friend = Friend.new(friend_params)
 
-    respond_to do |format|
-      if @friend.save
-        format.html { redirect_to friend_url(@friend), notice: "Friend was successfully created." }
-        format.json { render :show, status: :created, location: @friend }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @friend.errors, status: :unprocessable_entity }
-      end
+    if @friend.save
+      redirect_to @friend, notice: "Friend was successfully created."
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /friends/1 or /friends/1.json
   def update
-    respond_to do |format|
-      if @friend.update(friend_params)
-        format.html { redirect_to friend_url(@friend), notice: "Friend was successfully updated." }
-        format.json { render :show, status: :ok, location: @friend }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @friend.errors, status: :unprocessable_entity }
-      end
+    if @friend.update(friend_params)
+      redirect_to @friend, notice: "Friend was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
   # DELETE /friends/1 or /friends/1.json
-  def delete
-    @friend.delete
-
-    respond_to do |format|
-      format.html { redirect_to friends_url, notice: "Friend was successfully deleted." }
-      format.json { head :no_content }
-    end
+  def destroy
+    @friend.destroy
+    redirect_to friends_url, notice: "Friend was successfully deleted."
   end
 
   private
