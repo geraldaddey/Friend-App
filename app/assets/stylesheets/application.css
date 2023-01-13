@@ -13,10 +13,17 @@
  *= require_tree .
  *= require_self
  */
-/* 
+
+#body {
+  margin: auto;
+  text-align: center;
+  width: max-content;
+  viewport-fit: auto;
+}
+
 #friends {
   display: contents;
-} */
+}
 /* 
 #friend_1 {
   color: black;
